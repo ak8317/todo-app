@@ -23,7 +23,8 @@ mongodb.connect(process.env.MONGODB_URI || matlas,{useNewUrlParser:true,useUnifi
 })
 if (process.env.NODE_ENV === 'production') {
     //app.use(express.static(path.join(__dirname, 'client/build')));
-    app.use(express.static(process.env.PWD + '/client/build'));
+    //app.use(express.static(process.env.PWD + '/client/build'));
+    app.use(express.static(__dirname + '/client/build'));
 }
 //create-bucket
 app.post('/api/buckets',function(req,res){
@@ -119,13 +120,17 @@ app.put('/api/tasks/toggle',function(req,res){
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 
-app.get('*', function (req, res) {
-  //const index = path.join(__dirname, 'client\build\', 'index.html');
-  //res.sendFile(index);
-   const index = path.join(process.env.PWD, '/client/build/index.html');
-   res.sendFile(index)
-});
+// app.get('*', function (req, res) {
+//   //const index = path.join(__dirname, 'client\build\', 'index.html');
+//   //res.sendFile(index);
+//    const index = path.join(process.env.PWD, '/client/build/index.html');
+//    res.sendFile(index)
+// });
    
+app.get('/*', function(req,res) {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    
+    });
 
 app.listen(PORT,()=>{
     console.log(`Severis starting at ${PORT}`)

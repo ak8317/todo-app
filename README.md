@@ -1,6 +1,9 @@
 # todo-app
 ![snapshot of the todo-app](./snap1.PNG)
 
+You can view live demo of application deployed on heroku here :-
+https://todo-bucket.herokuapp.com/
+
 This is a simple Todo-list application with following features
 1. Create bucket(label that can be assigned to a task/todo)
 2. Create a task under a bucket.

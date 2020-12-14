@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json())
 const path = require('path')
 //const url =process.env.MONGOGN_URI || 'mongodb://127.0.0.1:27017';
-const matlas="mongodb+srv://ankit8317:ankit8317@cluster0.khzga.mongodb.net/todoApp?retryWrites=true&w=majority"
+const matlas = require("./config/keys").mongoURI;
 process.env.PWD = process.cwd();
 mongodb.connect(process.env.MONGODB_URI || matlas,{useNewUrlParser:true,useUnifiedTopology:true},function(err,client){
     if(err){
